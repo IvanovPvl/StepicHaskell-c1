@@ -22,8 +22,9 @@ sum'n'count x = (toInteger $ sum digits, toInteger $ length $ digits) where
                  | otherwise = numbers (tail x) ((digitToInt $ head x) : nums)
 
 integration :: (Double -> Double) -> Double -> Double -> Double
-integration f a b = (integration' f ((f a + f b) / 2) (a + step)) * step
-  where
-    step = (b - a) / 1000
-    integration' f acc n | n >= b - step / 2 = acc
-                         | otherwise         = integration' f (acc + f n) (n + step)
+integration f a b = let
+  chunks = 1000
+  step = (b - a) / chunks
+  sum acc _ 0 = acc
+  sum acc x n = sum (acc + f x) (x + step) (n - 1) in
+  ((f a + f b) / 2 + sum 0 (a + step) (chunks - 1)) * step
