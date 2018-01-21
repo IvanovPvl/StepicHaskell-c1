@@ -9,4 +9,4 @@ main :: IO ()
 -- main = print $ seqA 301
 -- main = print $ numbers "123" []
 -- main = print $ sum'n'count (-39)
-main = print $ integration sin pi 0
+main = print $ integration sin 0 pi
