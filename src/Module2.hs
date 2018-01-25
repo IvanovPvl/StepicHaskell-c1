@@ -12,12 +12,12 @@ g = (*)
 h = snd
 
 on3 :: (b -> b -> b -> c) -> (a -> b) -> a -> a -> a -> c
-on3 f op x y z = f (op x) (op y) (op z))
+on3 f op x y z = f (op x) (op y) (op z)
 
-doItYourself = f . g . h
+doItYourself = f . g1 . h1
 
 f = logBase 2
 
-g = (^3)
+g1 = (^3)
 
-h = max 42
+h1 = max 42
