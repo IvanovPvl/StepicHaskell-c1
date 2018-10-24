@@ -1,5 +1,7 @@
 module Basics where
 
+import Data.Function (on)
+
 -- 1
 
 getSecondFrom :: a -> b -> c -> b

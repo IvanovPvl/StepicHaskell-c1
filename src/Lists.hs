@@ -1,5 +1,8 @@
 module Lists where
 
+import Data.List (unfoldr)
+import Data.Char (isLower, isDigit)
+
 -- 1
 
 addTwoElements :: a -> a -> [a] -> [a]
@@ -94,3 +97,8 @@ meanList = uncurry (/) . foldr (\x (s, c) -> (s + x, c + 1)) (0, 0)
 
 lastElem :: [a] -> a
 lastElem = foldl1 (flip const)
+
+revRange :: (Char,Char) -> [Char]
+revRange (a, b) = unfoldr f b
+    where f c | c >= a && c <= b = Just (c, pred c)
+              | otherwise = Nothing  
